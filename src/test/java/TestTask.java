@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import week9.Main;
 
-import java.util.Scanner;
-
 public class TestTask {
 
 
