@@ -13,8 +13,7 @@ public class TestTask {
     @Order(1)
     @DisplayName("Граниченое значение 1")
     public void testOne() {
-        Scanner scanner = new Scanner("1");
-        int result = Main.setNumbers(scanner);
+        int result = Main.countNumbers(1);
         Assertions.assertEquals(1, result);
     }
 
@@ -22,9 +21,8 @@ public class TestTask {
     @Order(2)
     @DisplayName("Граниченое значение 0")
     public void testTwo() {
-        Scanner scanner = new Scanner("0");
         Assertions.assertThrows(RuntimeException.class, () -> {
-            Main.setNumbers(scanner);
+            Main.verificateNumber("0");
         });
     }
 
@@ -32,9 +30,8 @@ public class TestTask {
     @Order(3)
     @DisplayName("Граниченое значение -1")
     public void testThree() {
-        Scanner scanner = new Scanner("-1");
         Assertions.assertThrows(RuntimeException.class, () -> {
-            Main.setNumbers(scanner);
+            Main.verificateNumber("-1");
         });
     }
 
@@ -42,8 +39,7 @@ public class TestTask {
     @Order(4)
     @DisplayName("Положительное целое 5")
     public void testFour() {
-        Scanner scanner = new Scanner("5");
-        int result = Main.setNumbers(scanner);
+        int result = Main.countNumbers(5);
         Assertions.assertEquals(15, result);
     }
 
@@ -51,9 +47,8 @@ public class TestTask {
     @Order(5)
     @DisplayName("Положительное с плавующей точкой 3.3")
     public void testFive() {
-        Scanner scanner = new Scanner("3.3");
         Assertions.assertThrows(RuntimeException.class, () -> {
-            Main.setNumbers(scanner);
+            Main.verificateNumber("3.3");
         });
 
     }
@@ -62,9 +57,8 @@ public class TestTask {
     @Order(6)
     @DisplayName("Символ")
     public void testSix() {
-        Scanner scanner = new Scanner("a");
         Assertions.assertThrows(RuntimeException.class, () -> {
-            Main.setNumbers(scanner);
+            Main.verificateNumber("a");
         });
     }
 
@@ -72,9 +66,8 @@ public class TestTask {
     @Order(7)
     @DisplayName("Пустая строка")
     public void testSeven() {
-        Scanner scanner = new Scanner("");
         Assertions.assertThrows(RuntimeException.class, () -> {
-            Main.setNumbers(scanner);
+            Main.verificateNumber("");
         });
 
 

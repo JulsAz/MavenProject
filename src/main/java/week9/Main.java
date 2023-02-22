@@ -9,34 +9,44 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
-        //System.out.println(setNumbers(new Scanner(System.in)));
-        System.out.println(setNumbers(new Scanner("2")));
+        String enteredNumber = getUserNumber();
+        int verificatedNumber = verificateNumber(enteredNumber);
+        int countedNumber = countNumbers(verificatedNumber);
+        System.out.println(countedNumber);
     }
 
-    public static int setNumbers(Scanner sc) {
+    public static String getUserNumber() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Введите целое положительное число:");
-        Scanner scanner = sc;
+        String userNumberS = scanner.nextLine();
+        return userNumberS;
+    }
 
-        int startNumber = 1;
-        int result = 0;
+    public static int verificateNumber(String userNumberS) {
         String errorMessage = "Некорректное число";
 
         try {
-            String stringNumber = scanner.nextLine();
-
-            int numberTo = Integer.parseInt(stringNumber);
-            if (numberTo > 0) {
-                while (startNumber <= numberTo) {
-                    result = result + startNumber;
-                    startNumber++;
-                }
-                return result;
+            int userNumber = Integer.parseInt(userNumberS);
+            if (userNumber > 0) {
+                return userNumber;
             } else {
                 throw new RuntimeException(errorMessage);
             }
         } catch (InputMismatchException | NumberFormatException e) {
             throw new RuntimeException(errorMessage);
         }
+    }
+
+    public static int countNumbers(int userNumber) {
+        int startNumber = 1;
+        int result = 0;
+
+        while (startNumber <= userNumber) {
+            result = result + startNumber;
+            startNumber++;
+        }
+        return result;
     }
 }
