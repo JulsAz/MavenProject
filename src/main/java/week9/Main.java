@@ -43,9 +43,8 @@ public class Main {
         int startNumber = 1;
         int result = 0;
 
-        while (startNumber <= userNumber) {
-            result = result + startNumber;
-            startNumber++;
+        for (int i = startNumber; i <= userNumber; i++) {
+            result = result + i;
         }
         return result;
     }
