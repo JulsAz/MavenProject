@@ -9,6 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+    public static final String errorMessage = "Некорректное число";
 
     public static void main(String[] args) {
         String enteredNumber = getUserNumber();
@@ -25,8 +26,6 @@ public class Main {
     }
 
     public static int verificateNumber(String userNumberS) {
-        String errorMessage = "Некорректное число";
-
         try {
             int userNumber = Integer.parseInt(userNumberS);
             if (userNumber > 0) {
@@ -40,10 +39,9 @@ public class Main {
     }
 
     public static int countNumbers(int userNumber) {
-        int startNumber = 1;
         int result = 0;
 
-        for (int i = startNumber; i <= userNumber; i++) {
+        for (int i = 1; i <= userNumber; i++) {
             result = result + i;
         }
         return result;

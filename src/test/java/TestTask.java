@@ -25,8 +25,9 @@ public class TestTask {
     public void testTwo() {
         assertThatThrownBy(() -> {
             Main.verificateNumber("0");
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessage("Некорректное число");
+        })
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage(Main.errorMessage);
     }
 
     @Test
@@ -35,8 +36,9 @@ public class TestTask {
     public void testThree() {
         assertThatThrownBy(() -> {
             Main.verificateNumber("-1");
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessage("Некорректное число");
+        })
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage(Main.errorMessage);
     }
 
     @Test
@@ -54,8 +56,9 @@ public class TestTask {
     public void testFive() {
         assertThatThrownBy(() -> {
             Main.verificateNumber("3.3");
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessage("Некорректное число");
+        })
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage(Main.errorMessage);
     }
 
     @Test
@@ -64,8 +67,9 @@ public class TestTask {
     public void testSix() {
         assertThatThrownBy(() -> {
             Main.verificateNumber("ф");
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessage("Некорректное число");
+        })
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage(Main.errorMessage);
     }
 
     @Test
@@ -74,7 +78,19 @@ public class TestTask {
     public void testSeven() {
         assertThatThrownBy(() -> {
             Main.verificateNumber("");
-        }).isInstanceOf(RuntimeException.class)
-                .hasMessage("Некорректное число");
+        })
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage(Main.errorMessage);
+    }
+
+    @Test
+    @Order(8)
+    @DisplayName("Null")
+    public void testEight() {
+        assertThatThrownBy(() -> {
+            Main.verificateNumber(null);
+        })
+                . isInstanceOf(RuntimeException.class)
+                .hasMessage(Main.errorMessage);
     }
 }
